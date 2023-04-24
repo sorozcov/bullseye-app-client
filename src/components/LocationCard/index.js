@@ -13,7 +13,7 @@ export default function LocationCard(location){
                             {Name}
                     </Col>
                     <Col sm={8} md={2} style={{display:'flex',justifyContent:'flex-end'}}>
-                            {`${Distance}km`} 
+                            {`${Distance}mi`} 
                     </Col>
                         
                     
@@ -23,7 +23,7 @@ export default function LocationCard(location){
             <Card.Body style={{padding:'1vw'}}>
                 <Card.Title>{`Address: ${Address1}, ${City} ${State},${PostCode},${CountryCode}`}</Card.Title>
                 
-                <Card.Text style={{paddingLeft:'1vw'}}>
+                <div style={{paddingLeft:'1vw'}}>
                         <Row>
                             <Col sm={12} md={12}>
                                 URL:  <Card.Link href={URL}>{URL}</Card.Link> 
@@ -41,7 +41,7 @@ export default function LocationCard(location){
                      
                         {/* <Row>Contact Name: {ContactName ?? ""}</Row>
                         <Row> CategoryNames: {CategoryNames} </Row> */}
-                </Card.Text>
+                </div>
                       
                         
                         

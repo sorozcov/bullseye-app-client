@@ -3,6 +3,8 @@ import { Col, Row, Spinner } from "react-bootstrap";
 import { BASE_API_URL,API_KEY, CLIENT_ID } from "../../config";
 import axios from "axios";
 import LocationCard from "../LocationCard";
+import LocationsFilter from '../LocationsFilters';
+import LocationsMap from "../LocationsMap";
 
 const simulatedLatLngUser = [31.619219,-84.217027]; 
 
@@ -41,12 +43,18 @@ export default function LocationsList(){
 
     return (
     <div style={{marginTop:'3vh',marginLeft:'2vw',marginRight:'2vw',marginBottom:'5vh'}}>
-        {areLocationsLoading ? <Spinner/> : <><Row>
-            <Col sm={12} md={5} style={{overflowY:'scroll',height:'77vh'}}>
+        {areLocationsLoading ? <Spinner/> : <>
+        <Row>
+            <LocationsFilter/>
+        </Row>
+        <Row>
+            <Col sm={12} md={5} style={{overflowY:'scroll',height:'71vh'}}>
                 {locations.map(location=><LocationCard  key={location.Id} {...location} />)}
             </Col>
             <Col sm={12} md={7}>
-                Here goes the map
+                <div style={{height:'71vh',width:'100%',display:'grid'}}>
+                    <LocationsMap locations={locations} centerPosition={simulatedLatLngUser}/>
+                </div>
             </Col>
             </Row></>}
     </div>
