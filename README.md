@@ -1,7 +1,7 @@
 
 # Getting Started with Create React App
 
-  
+Deployed project https://bullseye-app-client.vercel.app/
 
 This project displays a set of locations consuming an API.
 
