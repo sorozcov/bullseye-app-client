@@ -2,13 +2,18 @@ import { Marker, Popup } from "react-leaflet";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
-export default function LocationMarker(location){
+/* -------------------------------------------------------------------------- */
+/*                         Locations Marker Component                         */
+/* -------------------------------------------------------------------------- */
+export default function LocationMarker(props){
+    let {Latitude,Longitude,Name,Address1,City,State,PostCode,CountryCode,URL} = props;
     return (<>
-    <Marker position={[location.Latitude,location.Longitude]}>
+    <Marker position={[Latitude,Longitude]}>
+        
             <Popup>
-             Location: {location.Name} <br />
-             Address: {`Address: ${location.Address1}, ${location.City} ${location.State},${location.PostCode},${location.CountryCode}`} <br />
-             Location: <a href={location.URL}>{location.URL}</a> <br />
+             Location: {Name} <br />
+             Address: {`Address: ${Address1}, ${City} ${State},${PostCode},${CountryCode}`} <br />
+             URL: <a href={URL}>{URL}</a> <br />
             </Popup>
     </Marker>
     

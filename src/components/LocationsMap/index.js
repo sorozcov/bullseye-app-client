@@ -1,7 +1,9 @@
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer,useMap } from "react-leaflet";
 import LocationMarker from "../LocationMarker";
 import 'leaflet/dist/leaflet.css';
 
+
+/* ----------------------- Locations Map using Leaflet ---------------------- */
 export default function LocationsMap({centerPosition,locations}){
     return (
     <MapContainer center={centerPosition} zoom={13} scrollWheelZoom={true}>

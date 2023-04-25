@@ -2,9 +2,11 @@ import { Card, Col, Row } from "react-bootstrap";
 
 
 
-
+/* -------------------------------------------------------------------------- */
+/*                           Location Card Component                          */
+/* -------------------------------------------------------------------------- */
 export default function LocationCard(location){
-    let {Id,Name,Address1,PostCode,State,CountryCode, City,PhoneNumber,EmailAddress,URL,Distance,ContactName,CategoryNames,ContactURL,Latitude,Longitude} = location;
+    let {Id,Name,Address1,PostCode,State,CountryCode, City,PhoneNumber,EmailAddress,URL,Distance,ContactName,CategoryNames} = location;
     return (
         <Card key={Id} style={{marginTop:'1.5vh',marginBottom:'1vh'}} border="danger">
             <Card.Header as="h5" style={{padding:'1vw'}}>
@@ -37,10 +39,14 @@ export default function LocationCard(location){
                                 Email: <Card.Link href={`mailto:${EmailAddress}`}>{EmailAddress}</Card.Link>
                             </Col> 
                         </Row>
-
-                     
-                        {/* <Row>Contact Name: {ContactName ?? ""}</Row>
-                        <Row> CategoryNames: {CategoryNames} </Row> */}
+                        <Row>
+                            <Col sm={12} md={6}>
+                            Contact Name: {ContactName ?? ""}
+                            </Col>   
+                            <Col sm={12} md={6}>
+                            CategoryNames: {CategoryNames}
+                            </Col> 
+                        </Row>
                 </div>
                       
                         

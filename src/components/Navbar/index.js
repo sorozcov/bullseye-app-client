@@ -1,5 +1,7 @@
 import { Navbar } from 'react-bootstrap';
 
+
+/* --------------------------- Navbar for project --------------------------- */
 export default function NavbarBullseye(){
 
     return(
