@@ -16,7 +16,6 @@ export default function LocationsFilter({search, countryFilter,setCountryFilter,
     const  getCountriesOptions = async()=>{
       const params = {ClientId:CLIENT_ID,ApiKey:API_KEY};
       const response = await axios.get(`${BASE_API_URL}/restsearch.svc/getCountryList?`,{params});
-      console.log(response);
       if(response.status==200){
 
           setCountriesOptions(response.data);
@@ -35,7 +34,18 @@ export default function LocationsFilter({search, countryFilter,setCountryFilter,
             <Accordion.Header>Filters</Accordion.Header>
             <Accordion.Body>
 
-            <Form onSubmit={(e)=>{e.preventDefault();search();}}>
+            <Form onSubmit={(e)=>{e.preventDefault(); 
+              // if(zipCodeFilter.toString().length!==5){
+               
+              //   e.preventDefault();
+              //   e.stopPropagation();
+              // }else{
+              //   search();
+              // }
+              search();
+          
+              
+              }}>
               <Row>
                 <Col sm={12} md={4}>
                   <Form.Group className="mb-3">
@@ -44,7 +54,7 @@ export default function LocationsFilter({search, countryFilter,setCountryFilter,
                         value={countryFilter}  
                         onChange={(e)=>setCountryFilter(e.target.value)}
                         >
-                        {countries.map(country=>(<option value={country.Id}>{country.Name}</option>))}
+                        {countries.map(country=>(<option key={country.Id} value={country.Id}>{country.Name}</option>))}
                       </Form.Select>
                       
                   </Form.Group>
@@ -52,7 +62,7 @@ export default function LocationsFilter({search, countryFilter,setCountryFilter,
                 <Col sm={12} md={4}>
                   <Form.Group className="mb-3" >
                       <Form.Label>Zip Code</Form.Label>
-                      <Form.Control type="text" min={0} placeholder="XXXXX"  
+                      <Form.Control type="number" min={0} placeholder="XXXXX"  
                         required
                         value={zipCodeFilter}
                         onChange={(e)=>setZipCodeFilter(e.target.value)}
@@ -67,11 +77,11 @@ export default function LocationsFilter({search, countryFilter,setCountryFilter,
                         value={radiusFilter}  
                         onChange={(e)=>setRadiusFilter(e.target.value)}
                         >
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="30">30</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
+                        <option key={5} value="5">5</option>
+                        <option key={10} value="10">10</option>
+                        <option key={30} value="30">30</option>
+                        <option key={50} value="50">50</option>
+                        <option key={100} value="100">100</option>
                       </Form.Select>
                       
                   </Form.Group>
