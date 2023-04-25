@@ -6,7 +6,7 @@ import { Card, Col, Row } from "react-bootstrap";
 /*                           Location Card Component                          */
 /* -------------------------------------------------------------------------- */
 export default function LocationCard(location){
-    let {Id,Name,Address1,PostCode,State,CountryCode, City,PhoneNumber,EmailAddress,URL,Distance,ContactName,CategoryNames} = location;
+    let {Id,Name,Address1,PostCode,State,CountryCode, City,PhoneNumber,EmailAddress,URL,Distance,ContactName,CategoryNames,Latitude,Longitude} = location;
     return (
         <Card key={Id} style={{marginTop:'1.5vh',marginBottom:'1vh'}} border="danger">
             <Card.Header as="h5" style={{padding:'1vw'}}>
@@ -28,9 +28,15 @@ export default function LocationCard(location){
                 <div style={{paddingLeft:'1vw'}}>
                         <Row>
                             <Col sm={12} md={12}>
-                                URL:  <Card.Link href={URL}>{URL}</Card.Link> 
+                                URL:  <Card.Link target="_blank" href={URL}>{URL}</Card.Link> 
                             </Col>
                         </Row>
+                        <Row>
+                            <Col sm={12} md={12}>
+                                Google Maps:  <Card.Link target="_blank" href={`https://www.google.com/maps/search/?api=1&query=${Latitude},${Longitude}`}>Open</Card.Link> 
+                            </Col>
+                        </Row>
+                        
                         <Row>
                             <Col sm={12} md={6}>
                                 Phone:  <Card.Link href={`tel:${PhoneNumber}`}>{PhoneNumber}</Card.Link>
